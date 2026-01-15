@@ -270,53 +270,33 @@
 
             <div class="dashboard-content">
                 <div class="bus-management">
-    <h3><i class="fas fa-bus"></i> Bus Management</h3>
-    <div class="bus-form">
-        <div class="form-row">
-            <div class="form-group">
-                <label for="busName">Bus Name</label>
-                <input type="text" id="busName" value="City Express">
-            </div>
-            <div class="form-group">
-                <label for="busNumber">Bus Number</label>
-                <input type="text" id="busNumber" value="KA-01-AB-1234">
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group">
-                <label for="source">Source</label>
-                <input type="text" id="source" value="City Center" placeholder="Starting point">
-            </div>
-            <div class="form-group">
-                <label for="destination">Destination</label>
-                <input type="text" id="destination" value="North Suburbs" placeholder="Ending point">
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group">
-                <label for="viaRoute">Via Route</label>
-                <input type="text" id="viaRoute" value="Market Street, University, Tech Park" placeholder="Stops along the way">
-            </div>
-            <div class="form-group">
-                <label for="capacity">Bus Capacity</label>
-                <input type="number" id="capacity" value="40">
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group">
-                <label for="currentLocation">Current Location</label>
-                <input type="text" id="currentLocation" value="Market Street" placeholder="Where is the bus now?">
-            </div>
-            <div class="form-group">
-                <label for="nextStop">Next Stop</label>
-                <input type="text" id="nextStop" value="University" placeholder="Next stop">
-            </div>
-        </div>
-        <button class="btn-primary" onclick="updateBusInfo()">
-            <i class="fas fa-save"></i> Update Bus Information
-        </button>
-    </div>
-</div>
+                    <h3><i class="fas fa-bus"></i> Bus Management</h3>
+                    <div class="bus-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="busName">Bus Name</label>
+                                <input type="text" id="busName" value="City Express">
+                            </div>
+                            <div class="form-group">
+                                <label for="busNumber">Bus Number</label>
+                                <input type="text" id="busNumber" value="KA-01-AB-1234">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="route">Route</label>
+                                <input type="text" id="route" value="City Center - Suburbs">
+                            </div>
+                            <div class="form-group">
+                                <label for="capacity">Bus Capacity</label>
+                                <input type="number" id="capacity" value="40">
+                            </div>
+                        </div>
+                        <button class="btn-primary" onclick="updateBusInfo()">
+                            <i class="fas fa-save"></i> Update Bus Information
+                        </button>
+                    </div>
+                </div>
 
                 <div class="seat-management">
                     <h3><i class="fas fa-chair"></i> Seat Management</h3>
@@ -331,44 +311,11 @@
                             <p>Total Capacity: <span id="totalCapacity">40</span></p>
                         </div>
                         <div class="current-status">
-    <h4>Current Status</h4>
-    <p>Next Stop: University</p>
-    <p>ETA to Next Stop: 5 min</p>
-    <p>Occupancy: <span id="occupancy">62.5%</span></p>
-</div>
-<!-- ADD this RIGHT AFTER the seat-controls div (before closing seat-management): -->
-<div class="route-summary">
-    <h4><i class="fas fa-route"></i> Route Summary</h4>
-    <div class="route-display">
-        <div class="route-point source">
-            <i class="fas fa-play-circle"></i>
-            <div>
-                <strong>Source</strong>
-                <span id="displaySource">City Center</span>
-            </div>
-        </div>
-        <div class="route-stops">
-            <i class="fas fa-ellipsis-h"></i>
-            <span id="displayViaRoute">Market Street, University, Tech Park</span>
-        </div>
-        <div class="route-point destination">
-            <i class="fas fa-flag-checkered"></i>
-            <div>
-                <strong>Destination</strong>
-                <span id="displayDestination">North Suburbs</span>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- REPLACE with: -->
-<div class="current-status">
-    <h4>Current Status</h4>
-    <p><i class="fas fa-map-marker-alt"></i> Location: <span id="displayLocation">Market Street</span></p>
-    <p><i class="fas fa-flag-checkered"></i> Next Stop: <span id="displayNextStop">University</span></p>
-    <p><i class="fas fa-clock"></i> ETA to Next: 5 min</p>
-    <p><i class="fas fa-users"></i> Occupancy: <span id="occupancy">62.5%</span></p>
-</div>
+                            <h4>Current Status</h4>
+                            <p>Next Stop: University</p>
+                            <p>ETA to Next Stop: 5 min</p>
+                            <p>Occupancy: <span id="occupancy">62.5%</span></p>
+                        </div>
                     </div>
                 </div>
             </div>
