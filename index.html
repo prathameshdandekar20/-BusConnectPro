@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BusConnect Pro | Smart Transit Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚌</text></svg>">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-bus"></i>
+                <span>BusConnect<span class="brand-pro">Pro</span></span>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link active" onclick="showSection('home')">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="#history" class="nav-link" onclick="showSection('history')">
+                    <i class="fas fa-history"></i> History
+                </a>
+                <a href="#tutorial" class="nav-link" onclick="showSection('tutorial')">
+                    <i class="fas fa-graduation-cap"></i> Tutorial
+                </a>
+                <a href="#about" class="nav-link" onclick="showSection('about')">
+                    <i class="fas fa-info-circle"></i> About Us
+                </a>
+                <a href="#contact" class="nav-link" onclick="showSection('contact')">
+                    <i class="fas fa-envelope"></i> Contact
+                </a>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Home Section -->
+        <section id="home" class="page-section active">
+            <div class="hero-section">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span class="hero-highlight">Smart</span> Bus Scheduling
+                        <span class="hero-subtitle">Made Simple</span>
+                    </h1>
+                    <p class="hero-description">
+                        Streamline your public transportation with real-time tracking, 
+                        automated scheduling, and seamless passenger-conductor coordination.
+                    </p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <i class="fas fa-bolt"></i>
+                            <div>
+                                <h3>Real-time</h3>
+                                <p>Live Updates</p>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <div>
+                                <h3>Secure</h3>
+                                <p>Bank-level Security</p>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-gift"></i>
+                            <div>
+                                <h3>Free Rides</h3>
+                                <p>Reward System</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="bus-animation">
+                        <i class="fas fa-bus moving-bus"></i>
+                        <div class="road"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="role-selection-section">
+                <h2 class="section-title">Get Started</h2>
+                <p class="section-subtitle">Choose your role to continue</p>
+                
+                <div class="role-cards">
+                    <div class="role-card passenger-card" id="passengerCard">
+                        <div class="role-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h3>Passenger</h3>
+                        <p>Book seats, track buses, find routes</p>
+                        <ul class="role-features">
+                            <li><i class="fas fa-check"></i> Real-time bus tracking</li>
+                            <li><i class="fas fa-check"></i> Easy seat booking</li>
+                            <li><i class="fas fa-check"></i> Free ride rewards</li>
+                            <li><i class="fas fa-check"></i> Route planning</li>
+                        </ul>
+                        <button class="role-btn">
+                            <i class="fas fa-arrow-right"></i> Continue as Passenger
+                        </button>
+                    </div>
+                    
+                    <div class="role-card conductor-card" id="conductorCard">
+                        <div class="role-icon">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <h3>Conductor</h3>
+                        <p>Manage buses, update status, assign routes</p>
+                        <ul class="role-features">
+                            <li><i class="fas fa-check"></i> Bus management</li>
+                            <li><i class="fas fa-check"></i> Real-time updates</li>
+                            <li><i class="fas fa-check"></i> Passenger tracking</li>
+                            <li><i class="fas fa-check"></i> Analytics dashboard</li>
+                        </ul>
+                        <button class="role-btn">
+                            <i class="fas fa-arrow-right"></i> Continue as Conductor
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features -->
+            <div class="features-section">
+                <h2 class="section-title">Why Choose BusConnect Pro?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Real-time Updates</h3>
+                        <p>Live bus tracking and instant seat availability updates</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Secure & Reliable</h3>
+                        <p>Bank-level security for all transactions and data</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Mobile Friendly</h3>
+                        <p>Responsive design that works on all devices</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Smart Analytics</h3>
+                        <p>Detailed reports and insights for better management</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Passenger Login -->
+        <section id="passengerLogin" class="login-section">
+            <div class="login-container">
+                <button class="back-btn" onclick="showSection('home')">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </button>
+                <h2><i class="fas fa-user"></i> Passenger Login</h2>
+                <form id="passengerLoginForm">
+                    <div class="form-group">
+                        <label for="passengerId">Passenger ID</label>
+                        <input type="text" id="passengerId" placeholder="Enter your ID" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="passengerPassword">Password</label>
+                        <input type="password" id="passengerPassword" placeholder="Enter password" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Login</button>
+                    <p class="demo-note">For demo: Use any credentials</p>
+                </form>
+            </div>
+        </section>
+
+        <!-- Conductor Login -->
+        <section id="conductorLogin" class="login-section">
+            <div class="login-container">
+                <button class="back-btn" onclick="showSection('home')">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </button>
+                <h2><i class="fas fa-clipboard-check"></i> Conductor Login</h2>
+                <form id="conductorLoginForm">
+                    <div class="form-group">
+                        <label for="conductorId">Conductor ID</label>
+                        <input type="text" id="conductorId" placeholder="Enter conductor ID" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="conductorPassword">Password</label>
+                        <input type="password" id="conductorPassword" placeholder="Enter password" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Login</button>
+                    <p class="demo-note">For demo: Use any credentials</p>
+                </form>
+            </div>
+        </section>
+
+        <!-- Passenger Dashboard -->
+        <section id="passengerDashboard" class="dashboard-section">
+            <div class="dashboard-header">
+                <div class="header-left">
+                    <button class="back-btn" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                    <h2><i class="fas fa-user"></i> Passenger Dashboard</h2>
+                </div>
+                <div class="user-info">
+                    <span id="passengerName">Passenger</span>
+                    <div class="ride-count">
+                        <i class="fas fa-ticket-alt"></i>
+                        <span id="rideCounter">Rides: 0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-content">
+                <div class="search-section">
+                    <h3><i class="fas fa-search"></i> Find Your Bus</h3>
+                    <div class="search-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="pickupLocation">Pickup Location</label>
+                                <input type="text" id="pickupLocation" placeholder="Enter pickup point" value="City Center">
+                            </div>
+                            <div class="form-group">
+                                <label for="destination">Destination</label>
+                                <input type="text" id="destination" placeholder="Enter destination" value="Tech Park">
+                            </div>
+                        </div>
+                        <button class="btn-primary" onclick="searchBuses()">
+                            <i class="fas fa-search"></i> Search Buses
+                        </button>
+                    </div>
+                </div>
+
+                <div class="results-section">
+                    <h3>Available Buses</h3>
+                    <div id="busResults" class="bus-results">
+                        <!-- Buses will load here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conductor Dashboard -->
+        <section id="conductorDashboard" class="dashboard-section">
+            <div class="dashboard-header">
+                <div class="header-left">
+                    <button class="back-btn" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                    <h2><i class="fas fa-clipboard-check"></i> Conductor Dashboard</h2>
+                </div>
+                <div class="user-info">
+                    <span>Bus: <span id="currentBusName">City Express</span></span>
+                </div>
+            </div>
+
+            <div class="dashboard-content">
+                <div class="bus-management">
+                    <h3><i class="fas fa-bus"></i> Bus Management</h3>
+                    <div class="bus-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="busName">Bus Name</label>
+                                <input type="text" id="busName" value="City Express">
+                            </div>
+                            <div class="form-group">
+                                <label for="busNumber">Bus Number</label>
+                                <input type="text" id="busNumber" value="KA-01-AB-1234">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="route">Route</label>
+                                <input type="text" id="route" value="City Center - Suburbs">
+                            </div>
+                            <div class="form-group">
+                                <label for="capacity">Bus Capacity</label>
+                                <input type="number" id="capacity" value="40">
+                            </div>
+                        </div>
+                        <button class="btn-primary" onclick="updateBusInfo()">
+                            <i class="fas fa-save"></i> Update Bus Information
+                        </button>
+                    </div>
+                </div>
+
+                <div class="seat-management">
+                    <h3><i class="fas fa-chair"></i> Seat Management</h3>
+                    <div class="seat-controls">
+                        <div class="vacant-seats">
+                            <label>Vacant Seats:</label>
+                            <div class="seat-counter">
+                                <button onclick="adjustSeats(-1)">-</button>
+                                <span id="vacantSeats">15</span>
+                                <button onclick="adjustSeats(1)">+</button>
+                            </div>
+                            <p>Total Capacity: <span id="totalCapacity">40</span></p>
+                        </div>
+                        <div class="current-status">
+                            <h4>Current Status</h4>
+                            <p>Next Stop: University</p>
+                            <p>ETA to Next Stop: 5 min</p>
+                            <p>Occupancy: <span id="occupancy">62.5%</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- History Section -->
+        <section id="history" class="page-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-history"></i> Journey History
+                </h2>
+                <p class="section-subtitle">Track your travel history and rewards</p>
+            </div>
+            
+            <div class="history-container">
+                <div class="history-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-road"></i>
+                        <div>
+                            <h4>Total Rides</h4>
+                            <p id="totalRides">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-gift"></i>
+                        <div>
+                            <h4>Free Rides Earned</h4>
+                            <p id="freeRidesEarned">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-coins"></i>
+                        <div>
+                            <h4>Total Savings</h4>
+                            <p id="totalSavings">$0</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="history-timeline">
+                    <h3>Recent Journeys</h3>
+                    <div id="historyTimeline">
+                        <div class="empty-history">
+                            <i class="fas fa-history fa-3x"></i>
+                            <h4>No journey history yet</h4>
+                            <p>Your travel history will appear here after booking rides</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="page-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-info-circle"></i> About BusConnect Pro
+                </h2>
+                <p class="section-subtitle">Revolutionizing public transportation since 2026</p>
+            </div>
+            
+            <div class="about-container">
+                <div class="team-section">
+                    <h3>Meet Our Team</h3>
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <div class="member-avatar">PD</div>
+                            <h4>Prathamesh Dandekar</h4>
+                            <p>Full Stack Developer</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-avatar">SV</div>
+                            <h4>Shekhar Verma</h4>
+                            <p>Backend Architect</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-avatar">HS</div>
+                            <h4>Himanshu Singh</h4>
+                            <p>UI/UX Designer</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-avatar">AS</div>
+                            <h4>Arpit Singh</h4>
+                            <p>Project Manager</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="college-info">
+                    <div class="college-card">
+                        <i class="fas fa-university"></i>
+                        <h3>Government Engineering College, Bilaspur</h3>
+                        <p>Established in 2026 | Computer Science & Engineering Department</p>
+                        <p class="college-motto">"Innovating for a smarter tomorrow"</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Us Section -->
+        <section id="contact" class="page-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-envelope"></i> Contact Us
+                </h2>
+                <p class="section-subtitle">We'd love to hear from you</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Our Office</h4>
+                            <p>Government Engineering College<br>Bilaspur, Chhattisgarh</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>Phone Number</h4>
+                            <p>+91 98765 43210<br>Mon-Fri, 9AM-6PM</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email Address</h4>
+                            <p>support@busconnectpro.com<br>info@busconnectpro.com</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form-container">
+                    <div class="contact-form">
+                        <h3>Send us a Message</h3>
+                        <form id="contactForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="contactName">Full Name</label>
+                                    <input type="text" id="contactName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contactEmail">Email Address</label>
+                                    <input type="email" id="contactEmail" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contactSubject">Subject</label>
+                                <input type="text" id="contactSubject" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contactMessage">Message</label>
+                                <textarea id="contactMessage" rows="5" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="submit-btn">
+                                <i class="fas fa-paper-plane"></i> Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking Modal -->
+        <div id="bookingModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h3>Book Seats</h3>
+                <div id="modalBusInfo">
+                    <h4>City Express (KA-01-AB-1234)</h4>
+                    <p>Route: City Center - Suburbs</p>
+                    <p>Available Seats: <span id="modalSeats">15</span></p>
+                    <p>Fare: $25 per seat</p>
+                </div>
+                <div class="seat-selection">
+                    <label for="seatCount">Number of Seats:</label>
+                    <input type="number" id="seatCount" min="1" max="10" value="1">
+                </div>
+                <div class="payment-info">
+                    <p id="fareAmount">Fare: $25</p>
+                    <p id="freeRideMessage" class="free-ride-message">First ride free!</p>
+                </div>
+                <button class="btn-primary" onclick="confirmBooking()">Confirm Booking</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <div class="footer-brand">
+                    <i class="fas fa-bus"></i>
+                    <span>BusConnect<span class="brand-pro">Pro</span></span>
+                </div>
+                <p class="footer-description">
+                    Revolutionizing public transportation through innovative technology solutions.
+                </p>
+                <div class="social-media">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com" target="_blank" class="social-icon linkedin">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.instagram.com" target="_blank" class="social-icon instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://twitter.com" target="_blank" class="social-icon twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.facebook.com" target="_blank" class="social-icon facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.youtube.com" target="_blank" class="social-icon youtube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://github.com" target="_blank" class="social-icon github">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#home" onclick="showSection('home')"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="#history" onclick="showSection('history')"><i class="fas fa-chevron-right"></i> History</a></li>
+                    <li><a href="#tutorial" onclick="showSection('tutorial')"><i class="fas fa-chevron-right"></i> Tutorial</a></li>
+                    <li><a href="#about" onclick="showSection('about')"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="#contact" onclick="showSection('contact')"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-bus"></i> Bus Booking</a></li>
+                    <li><a href="#"><i class="fas fa-route"></i> Route Planning</a></li>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Real-time Tracking</a></li>
+                    <li><a href="#"><i class="fas fa-clipboard-check"></i> Conductor Portal</a></li>
+                    <li><a href="#"><i class="fas fa-chart-line"></i> Analytics</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Contact Info</h4>
+                <ul class="contact-info">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Head Office</strong>
+                            <span>GEC Bilaspur, Chhattisgarh</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong>Phone</strong>
+                            <span>+91 98765 43210</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Email</strong>
+                            <span>info@busconnectpro.com</span>
+                        </div>
+                    </li>
+                </ul>
+                
+                <div class="newsletter">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe for updates and offers</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Your email">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <div class="copyright">
+                    <p>&copy; 2026 BusConnect Pro. All rights reserved.</p>
+                    <p>Developed at Government Engineering College, Bilaspur</p>
+                </div>
+                <div class="legal-links">
+                    <a href="#">Privacy Policy</a>
+                    <span class="separator">|</span>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating Social Media -->
+        <div class="floating-social">
+            <a href="https://wa.me/919876543210" target="_blank" class="floating-icon whatsapp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="tel:+919876543210" class="floating-icon phone">
+                <i class="fas fa-phone"></i>
+            </a>
+            <a href="mailto:info@busconnectpro.com" class="floating-icon email">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
