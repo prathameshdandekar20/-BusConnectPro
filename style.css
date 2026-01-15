@@ -1375,3 +1375,86 @@ body {
         font-size: 1rem;
     }
 }
+/* ==================== CONDUCTOR ROUTE DISPLAY ==================== */
+.route-summary {
+    margin-top: 30px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: var(--border-radius);
+}
+
+.route-display {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.route-point {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.route-point.source i {
+    color: var(--success-color);
+    font-size: 1.5rem;
+}
+
+.route-point.destination i {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+}
+
+.route-stops {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 20px;
+    background: #e3f2fd;
+    border-radius: var(--border-radius);
+    margin-left: 30px;
+}
+
+.route-stops i {
+    color: var(--warning-color);
+}
+
+.route-point strong {
+    display: block;
+    color: var(--dark-color);
+    font-size: 0.9rem;
+}
+
+.route-point span {
+    color: var(--gray-color);
+    font-size: 0.9rem;
+}
+
+.route-stops span {
+    color: var(--dark-color);
+    font-size: 0.9rem;
+    flex: 1;
+}
+
+/* Passenger bus card route display */
+.bus-info .fa-road {
+    color: var(--primary-color);
+    margin-right: 5px;
+}
+
+.bus-info .fa-flag-checkered {
+    color: var(--success-color);
+    margin-right: 5px;
+}
+
+/* Current status icons */
+.current-status i {
+    color: var(--primary-color);
+    margin-right: 8px;
+    width: 20px;
+}

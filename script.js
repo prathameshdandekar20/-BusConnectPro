@@ -6,13 +6,17 @@ const appState = {
     userType: null,
     currentBus: {
         id: 1,
-        name: "City Express",
-        number: "KA-01-AB-1234",
-        route: "City Center - Suburbs",
-        capacity: 40,
-        vacantSeats: 15,
-        fare: 25,
-        stops: ["City Center", "Market Street", "University", "Tech Park", "North Suburbs"]
+    name: "City Express",
+    number: "CG 10 Z 1122",
+    source: "New Bus Stand,Tifra",
+    destination: "Pendra",
+    viaRoute: "Nehru Chowk,Mahamaya Chowk,GEC Bilaspur,Ratanpur",
+    capacity: 100,
+    vacantSeats: 15,
+    fare: 25,
+    currentLocation: "Nehru Chowk",
+    nextStop: "GEC",
+    stops: ["Sendri", "GEC Bilaspur", "Lodhipara", "Nehru Chowk", "Mandir Chowk"]
     },
     passengerData: {
         rideCount: 0,
@@ -304,26 +308,40 @@ function searchBuses() {
         resultsDiv.innerHTML = '<p class="no-results">Please enter both pickup and destination locations</p>';
         return;
     }
+    // ADD this NEW function:
+function calculateETA(pickup) {
+    // Calculate ETA based on current location and pickup
+    const stops = appState.currentBus.stops;
+    const currentIndex = stops.indexOf(appState.currentBus.currentLocation);
+    const pickupIndex = stops.indexOf(pickup);
+    
+    if (currentIndex === -1 || pickupIndex === -1 || pickupIndex <= currentIndex) {
+        return 0;
+    }
+    
+    return (pickupIndex - currentIndex) * 5; // 5 minutes per stop
+}
     
     // Create bus card
     const busCard = document.createElement('div');
     busCard.className = 'bus-card';
     busCard.innerHTML = `
-        <div class="bus-info">
-            <h4>${appState.currentBus.name} (${appState.currentBus.number})</h4>
-            <p><i class="fas fa-route"></i> ${appState.currentBus.route}</p>
-            <p><i class="fas fa-map-marker-alt"></i> From ${appState.currentBus.stops[0]} to ${appState.currentBus.stops[appState.currentBus.stops.length - 1]}</p>
-            <p><i class="fas fa-clock"></i> Current: ${appState.currentBus.stops[1]}</p>
-        </div>
-        <div class="seat-info">
-            <p class="available"><i class="fas fa-chair"></i> ${appState.currentBus.vacantSeats} seats available</p>
-            <p class="eta"><i class="fas fa-running"></i> ETA to pickup: 5 min</p>
-            <p>Fare: $${appState.currentBus.fare}</p>
-        </div>
-        <button class="book-btn" onclick="openBookingModal()">
-            <i class="fas fa-ticket-alt"></i> Book Now
-        </button>
-    `;
+    <div class="bus-info">
+        <h4>${appState.currentBus.name} (${appState.currentBus.number})</h4>
+        <p><i class="fas fa-route"></i> ${appState.currentBus.source} → ${appState.currentBus.destination}</p>
+        <p><i class="fas fa-road"></i> Via: ${appState.currentBus.viaRoute}</p>
+        <p><i class="fas fa-map-marker-alt"></i> Current: ${appState.currentBus.currentLocation}</p>
+        <p><i class="fas fa-flag-checkered"></i> Next: ${appState.currentBus.nextStop}</p>
+    </div>
+    <div class="seat-info">
+        <p class="available"><i class="fas fa-chair"></i> ${appState.currentBus.vacantSeats} seats available</p>
+        <p class="eta"><i class="fas fa-running"></i> ETA to pickup: ${calculateETA(pickup)} min</p>
+        <p><i class="fas fa-tag"></i> Fare: $${appState.currentBus.fare}</p>
+    </div>
+    <button class="book-btn" onclick="openBookingModal()">
+        <i class="fas fa-ticket-alt"></i> Book Now
+    </button>
+`;
     
     resultsDiv.appendChild(busCard);
 }
@@ -460,12 +478,16 @@ function initializeConductorDashboard() {
 function updateBusInfo() {
     const busName = document.getElementById('busName').value;
     const busNumber = document.getElementById('busNumber').value;
-    const route = document.getElementById('route').value;
+    const source = document.getElementById('source').value;
+    const destination = document.getElementById('destination').value;
+    const viaRoute = document.getElementById('viaRoute').value;
     const capacity = parseInt(document.getElementById('capacity').value);
+    const currentLocation = document.getElementById('currentLocation').value;
+    const nextStop = document.getElementById('nextStop').value;
     
-    // Validate
-    if (!busName || !busNumber || !route || !capacity) {
-        showNotification('❌ Please fill all fields', 'warning');
+    // Validate required fields
+    if (!busName || !busNumber || !source || !destination || !viaRoute || !capacity) {
+        showNotification('❌ Please fill all required fields', 'warning');
         return;
     }
     
@@ -477,8 +499,15 @@ function updateBusInfo() {
     // Update bus data
     appState.currentBus.name = busName;
     appState.currentBus.number = busNumber;
-    appState.currentBus.route = route;
+    appState.currentBus.source = source;
+    appState.currentBus.destination = destination;
+    appState.currentBus.viaRoute = viaRoute;
     appState.currentBus.capacity = capacity;
+    appState.currentBus.currentLocation = currentLocation;
+    appState.currentBus.nextStop = nextStop;
+    
+    // Update stops array from viaRoute
+    appState.currentBus.stops = [source, ...viaRoute.split(',').map(s => s.trim()), destination];
     
     // Ensure vacant seats don't exceed capacity
     if (appState.currentBus.vacantSeats > capacity) {
@@ -490,6 +519,9 @@ function updateBusInfo() {
     document.getElementById('totalCapacity').textContent = capacity;
     document.getElementById('currentBusName').textContent = busName;
     
+    // Update display fields
+    updateDisplayFields();
+    
     // Update occupancy
     updateOccupancy();
     
@@ -498,8 +530,8 @@ function updateBusInfo() {
         id: Date.now(),
         type: 'update',
         title: 'Bus Information Updated',
-        description: `Updated ${busName} details`,
-        details: `New capacity: ${capacity} | Route: ${route}`,
+        description: `Updated ${busName} route`,
+        details: `Source: ${source} → Destination: ${destination}`,
         date: new Date().toLocaleString()
     };
     
@@ -509,6 +541,31 @@ function updateBusInfo() {
     saveData();
     
     showNotification('✅ Bus information updated successfully!', 'success');
+}
+// ADD this NEW function:
+function updateDisplayFields() {
+    // Update all display fields
+    if (document.getElementById('displaySource')) {
+        document.getElementById('displaySource').textContent = appState.currentBus.source;
+    }
+    if (document.getElementById('displayDestination')) {
+        document.getElementById('displayDestination').textContent = appState.currentBus.destination;
+    }
+    if (document.getElementById('displayViaRoute')) {
+        document.getElementById('displayViaRoute').textContent = appState.currentBus.viaRoute;
+    }
+    if (document.getElementById('displayLocation')) {
+        document.getElementById('displayLocation').textContent = appState.currentBus.currentLocation;
+    }
+    if (document.getElementById('displayNextStop')) {
+        document.getElementById('displayNextStop').textContent = appState.currentBus.nextStop;
+    }
+    
+    // Update booked seats
+    const booked = appState.currentBus.capacity - appState.currentBus.vacantSeats;
+    if (document.getElementById('bookedSeats')) {
+        document.getElementById('bookedSeats').textContent = booked;
+    }
 }
 
 function adjustSeats(change) {
